@@ -1,11 +1,14 @@
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+
 import java.nio.file.Path
-import java.nio.file.Paths
 
 import com.kazurayam.ks.reporting.ReportsDirectoryScanner
-import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-Path projectDir = Paths.get(RunConfiguration.getProjectDir())
-Path workDir = projectDir.resolve("build/tmp/test/smoke/Reports")
+/**
+ * test/ReportsDirectoryScannerTest
+ */
+Path workDir = WebUI.callTestCase(findTestCase("test/prepareWorkDir"), [:])
 
 ReportsDirectoryScanner scanner = new ReportsDirectoryScanner()
 List<Path> reportFolders = scanner.scanReportsDirectory(workDir)
