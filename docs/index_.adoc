@@ -28,7 +28,12 @@ I would write a WebDriver-driven Groovy code which performs the following:
 3. By a JavaScript, serialize the DOM of the Report page into a text. Transfer the text back to the Groovy code. The code will write the text into a local file. I called the file as "Expanded Report HTML".
 4. The Groovy code executes `chrome` in OS commandline with `--print-to-pdf` option so that it converts the "Expanded Report HTML" into PDF.
 
-I could write a set of code, which produced the following PDF
+I could write a set of code
+
+- https://github.com/kazurayam/KSReportHtmlToPdfPrinter/blob/develop/Scripts/test/HtmlToPdfPrinterTest/Script1693312318272.groovy
+
+
+This produced the following PDF
 
 - https://kazurayam.github.io/KSReportHtmlToPdfPrinter/output.pdf
 

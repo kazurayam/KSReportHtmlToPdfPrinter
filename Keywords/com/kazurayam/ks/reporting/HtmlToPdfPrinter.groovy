@@ -5,7 +5,6 @@ import java.nio.file.Path
 import com.kazurayam.subprocessj.CommandLocator
 import com.kazurayam.subprocessj.OSType
 import com.kazurayam.subprocessj.Subprocess
-import com.kazurayam.subprocessj.Subprocess.CompletedProcess
 
 public class HtmlToPdfPrinter {
 

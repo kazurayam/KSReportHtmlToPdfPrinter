@@ -36,7 +36,11 @@ I would write a WebDriver-driven Groovy code which performs the following:
 
 4.  The Groovy code executes `chrome` in OS commandline with `--print-to-pdf` option so that it converts the "Expanded Report HTML" into PDF.
 
-I could write a set of code, which produced the following PDF
+I could write a set of code
+
+-   <https://github.com/kazurayam/KSReportHtmlToPdfPrinter/blob/develop/Scripts/test/HtmlToPdfPrinterTest/Script1693312318272.groovy>
+
+This produced the following PDF
 
 -   <https://kazurayam.github.io/KSReportHtmlToPdfPrinter/output.pdf>
 

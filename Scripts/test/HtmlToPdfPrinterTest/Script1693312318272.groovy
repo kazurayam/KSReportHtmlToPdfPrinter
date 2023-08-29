@@ -1,15 +1,11 @@
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 
-import java.nio.file.Path
-
-import com.kazurayam.ks.reporting.HtmlToPdfPrinter
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
-import java.nio.file.StandardCopyOption
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
 
+import com.kazurayam.ks.reporting.HtmlToPdfPrinter
 import com.kazurayam.ks.reporting.ReportHtmlExpander
 import com.kazurayam.ks.reporting.ReportsDirectoryScanner
 import com.kms.katalon.core.configuration.RunConfiguration
