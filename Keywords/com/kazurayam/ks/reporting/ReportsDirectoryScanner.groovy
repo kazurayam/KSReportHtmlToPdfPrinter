@@ -25,4 +25,31 @@ public class ReportsDirectoryScanner {
 				})
 		return reportFolders
 	}
+	
+	public List<Path> findHtmlFiles(Path reportFolder) {
+		Objects.requireNonNull(reportFolder)
+		assert Files.exists(reportFolder)
+		assert Files.isDirectory(reportFolder)
+		List<Path> htmlFiles = new ArrayList<Path>()
+		Files.walkFileTree(reportFolder,
+			new SimpleFileVisitor<Path>() {
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+					if (file.getFileName().toString().endsWith(".html")) {
+						htmlFiles.add(file)
+					}
+					return FileVisitResult.CONTINUE;
+				}
+			})
+		return htmlFiles
+	}
+	
+	public Path findHtmlFile(Path reportFolder) {
+		List<Path> htmlFiles = findHtmlFiles(reportFolder)
+		if (htmlFiles.size() > 0) {
+			return htmlFiles.get(0)
+		} else {
+			return null
+		}
+	}
 }

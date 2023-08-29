@@ -10,3 +10,8 @@ Path workDir = projectDir.resolve("build/tmp/test/smoke/Reports")
 ReportsDirectoryScanner scanner = new ReportsDirectoryScanner()
 List<Path> reportFolders = scanner.scanReportsDirectory(workDir)
 assert reportFolders.size() == 1
+
+Path html = scanner.findHtmlFile(reportFolders.get(0))
+assert html != null
+assert html.getFileName().toString().endsWith(".html")
+
