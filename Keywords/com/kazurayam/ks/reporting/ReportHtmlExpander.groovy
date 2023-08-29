@@ -7,7 +7,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 public class ReportHtmlExpander {
 
-	public Path expand(Path reportHtml, Path tempDir = null) {
+	public Path expand(Path reportHtml, Path tempDir) {
 		Objects.requireNonNull(reportHtml)
 		assert Files.exists(reportHtml)
 		if (tempDir != null) {
@@ -27,7 +27,7 @@ let str = s.serializeToString(d);
 return str
 """
 		String serializedDOM = WebUI.executeJavaScript(js, null)
-		Path tmpFile = Files.createTempFile(tempDir, ".tmp")
+		Path tmpFile = Files.createTempFile(tempDir, null, ".tmp")
 		tmpFile.toFile().text = serializedDOM
 		//
 		WebUI.closeBrowser()

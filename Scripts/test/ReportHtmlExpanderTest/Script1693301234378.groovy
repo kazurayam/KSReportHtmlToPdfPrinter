@@ -1,5 +1,6 @@
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 
+import java.nio.file.StandardCopyOption
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -21,12 +22,12 @@ assert reportFolders.size() == 1
 Path reportFolder = reportFolders.get(0)
 Path html = scanner.findHtmlFile(reportFolder)
 assert html != null
-assert html.getFileName().toString().endsWith(".html")
+assert html.getFileName().toString() =~ ReportsDirectoryScanner.HTML_REPORT_FILENAME
 
 Path tmpDir = Paths.get(RunConfiguration.getProjectDir()).resolve("build/tmp/test")
 ReportHtmlExpander expander = new ReportHtmlExpander()
 Path expandedTmp = expander.expand(html, tmpDir)
-Path expanded = reportFolder.resolve("expanded.html")
-Files.copy(expandedTmp, expanded)
+// overwrite the source html with the expanded one
+Files.copy(expandedTmp, html, StandardCopyOption.REPLACE_EXISTING)
 
 
