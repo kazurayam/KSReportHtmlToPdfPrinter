@@ -8,10 +8,8 @@ import java.nio.file.attribute.BasicFileAttributes
 import java.util.regex.Pattern
 
 public class ReportsDirectoryScanner {
-	
-	public static final String HTML_REPORT_FILENAME = /\d{8}_\d{6}.html/
-	
-	public static final String PDF_REPORT_FILENAME = /\d{8}_\d{6}.pdf/
+
+	public static final String HTML_REPORT_FILENAME = /(\d{8}_\d{6}).html/
 
 	public List<Path> scanReportsDirectory(Path reportsDir) {
 		Objects.requireNonNull(reportsDir)
