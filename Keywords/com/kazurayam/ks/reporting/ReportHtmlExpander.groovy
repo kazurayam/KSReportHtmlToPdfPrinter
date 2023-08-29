@@ -7,17 +7,8 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 public class ReportHtmlExpander {
 	
-	public static final EXPANDING_JS = "expandAllChildren('s1')"
+	public static EXPANDING_JS = "expandAllChildren('s1')"
 	
-	/**
-	 * If you want to change the EXPANDING_JS, you can do it ...
-	 * 
-	 * @param js
-	 */
-	public void setExpandingJs(String js) {
-		EXPANDING_JS = js
-	}
-
 	public Path expand(Path reportHtml, Path tempDir) {
 		Objects.requireNonNull(reportHtml)
 		assert Files.exists(reportHtml)
