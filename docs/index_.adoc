@@ -1,0 +1,47 @@
+= Printing Katalon Studio's Report HTML into PDF
+
+== Problem to solve
+
+In the Katalon User forum, there was a post
+link:https://forum.katalon.com/t/the-results-of-the-katalon-report-pdf-are-not-neat-if-using-too-long-descriptions/94163["The results of the katalon report (pdf) are not neat if using too long descriptions"].
+
+The original post reported that, the PDF of Katalon Studio's Test Report is not good enough. A long text as "description" of a Test Case breaks the layout.
+
+image::https://europe1.discourse-cdn.com/katalon/original/3X/e/a/ea79627c1a2cb1dc532ec0ab39006f83e0bd5108.png[]
+
+It is obvious that Katalon needs a fix. I wondered how the PDF is generated. I looked for the source code of code generation in link:https://github.com/katalon-studio/katalon-studio-testing-framework/tree/master/Include/scripts/groovy/com/kms/katalon/core[] , but I couldn't. So how can I fix this issue if I were to try it?
+
+== What I have done
+
+Katalon Studio generates a Test Report in HTML. How can I convert the HTML into PDF?
+
+I searched and found the following Chrome's document.
+
+- https://developer.chrome.com/blog/headless-chrome/#create-a-pdf
+
+Chrome browser has a feature of "Print the page as a PDF". Why not we use this feature to make the PDF of Katalon's Test Report?
+
+I would write a WebDriver-driven Groovy code which performs the following:
+
+1. Open the Report HTML file in a browser
+2. Execute a JavaScript code fragment `expandAllChildren('s1')` in the browser. This will turn all of the collapsed `<div>` nodes visible.
+3. By a JavaScript, serialize the DOM of the Report page into a text. Transfer the text back to the Groovy code. The code will write the text into a local file. I called the file as "Expanded Report HTML".
+4. The Groovy code executes `chrome` in OS commandline with `--print-to-pdf` option so that it converts the "Expanded Report HTML" into PDF.
+
+I could write a set of code, which produced the following PDF
+
+- https://kazurayam.github.io/KSReportHtmlToPdfPrinter/output.pdf
+
+I was satisfied 99% by this experiments.
+
+Am I going to extend the code further for Katalon users in general? --- No. I am not. Because I am not capable to satisfy their requirement.
+
+They would obviously require Katalon Studio GUI to produce a PDF of better layout by just the same operation. The would not welcome any custom coding. --- I can not make it.
+
+Katalon Studio offers user only a limited chance to insert customized processing. This case, TestListener's `@AfterTestSuite`-annotated method. When the method is invoked, there is no HTML file in the reportFolder. Katalon Studio generates the HTML after the `@AfterTestSuite`-annotated method has finished. So users has no chance to inject any processing for the HTML report.
+
+I would finish this project as it is now.
+
+
+30,Aout,2023
+
