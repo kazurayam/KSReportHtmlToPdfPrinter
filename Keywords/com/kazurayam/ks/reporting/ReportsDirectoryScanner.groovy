@@ -30,7 +30,7 @@ public class ReportsDirectoryScanner {
 		return reportFolders
 	}
 
-	public List<Path> findHtmlFiles(Path reportFolder) {
+	public List<Path> findReportHtmlFiles(Path reportFolder) {
 		Objects.requireNonNull(reportFolder)
 		assert Files.exists(reportFolder)
 		assert Files.isDirectory(reportFolder)
@@ -49,8 +49,8 @@ public class ReportsDirectoryScanner {
 		return htmlFiles
 	}
 
-	public Path findHtmlFile(Path reportFolder) {
-		List<Path> htmlFiles = findHtmlFiles(reportFolder)
+	public Path findReportHtmlFile(Path reportFolder) {
+		List<Path> htmlFiles = findReportHtmlFiles(reportFolder)
 		if (htmlFiles.size() > 0) {
 			return htmlFiles.get(0)
 		} else {

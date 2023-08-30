@@ -6,7 +6,7 @@ import java.nio.file.StandardCopyOption
 
 public class Jongleur {
 
-	public int convertReportHtmlToPdf(Path reportsDir) {
+	public int convertAllReportHtmlToPdf(Path reportsDir) {
 		Objects.requireNonNull(reportsDir)
 		assert Files.exists(reportsDir)
 		assert Files.isDirectory(reportsDir)

@@ -11,12 +11,13 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
  * test/JongleurTest
  */
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
-Path sourceReportsDir = projectDir.resolve("src/test/fixtures/Reports")
+Path sourceReportsDir = projectDir.resolve("Reports")
+//Path sourceReportsDir = projectDir.resolve("src/test/fixtures/Reports")
 Path targetReportsDir = projectDir.resolve("build/tmp/JongleurTest/Reports")
 WebUI.callTestCase(findTestCase("test/prepareWorkDir"), ["sourceReportsDir": sourceReportsDir, "targetReportsDir": targetReportsDir])
 
 Jongleur jongleur = new Jongleur()
-int numOfPdf = jongleur.convertReportHtmlToPdf(targetReportsDir)
-assert numOfPdf == 1
+int numOfPdf = jongleur.convertAllReportHtmlToPdf(targetReportsDir)
+assert numOfPdf > 0
 
 

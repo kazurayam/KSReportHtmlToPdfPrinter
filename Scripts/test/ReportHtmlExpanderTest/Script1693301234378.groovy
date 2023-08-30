@@ -23,7 +23,7 @@ List<Path> reportFolders = scanner.scanReportsDirectory(targetReportsDir)
 assert reportFolders.size() == 1
 
 Path reportFolder = reportFolders.get(0)
-Path html = scanner.findHtmlFile(reportFolder)
+Path html = scanner.findReportHtmlFile(reportFolder)
 assert html != null
 assert html.getFileName().toString() =~ ReportsDirectoryScanner.HTML_REPORT_FILENAME
 
