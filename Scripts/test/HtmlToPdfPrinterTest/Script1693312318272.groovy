@@ -14,14 +14,13 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 /**
  *  test/ReportHtmlExpanderTest
  */
-HtmlToPdfPrinter printer = new HtmlToPdfPrinter()
-String chromeBinaryPath = HtmlToPdfPrinter.getChromeBinaryPath()
-println "chromeBinaryPath: ${chromeBinaryPath}"
-
-Path workDir = WebUI.callTestCase(findTestCase("test/prepareWorkDir"), [:])
+Path projectDir = Paths.get(RunConfiguration.getProjectDir())
+Path sourceReportsDir = projectDir.resolve("src/test/fixtures/Reports")
+Path targetReportsDir = projectDir.resolve("build/tmp/HtmlToPdfPrinterTest/Reports")
+WebUI.callTestCase(findTestCase("test/prepareWorkDir"), ["sourceReportsDir": sourceReportsDir, "targetReportsDir": targetReportsDir])
 
 ReportsDirectoryScanner scanner = new ReportsDirectoryScanner()
-List<Path> reportFolders = scanner.scanReportsDirectory(workDir)
+List<Path> reportFolders = scanner.scanReportsDirectory(targetReportsDir)
 assert reportFolders.size() == 1
 
 Path reportFolder = reportFolders.get(0)
@@ -29,12 +28,15 @@ Path html = scanner.findHtmlFile(reportFolder)
 assert html != null
 assert html.getFileName().toString() =~ ReportsDirectoryScanner.HTML_REPORT_FILENAME
 
-Path tmpDir = Paths.get(RunConfiguration.getProjectDir()).resolve("build/tmp/test")
+Path tmpDir = Paths.get(RunConfiguration.getProjectDir()).resolve("build/tmp")
 ReportHtmlExpander expander = new ReportHtmlExpander()
 Path expandedTmp = expander.expand(html, tmpDir)
 // overwrite the source html with the expanded one
 Files.copy(expandedTmp, html, StandardCopyOption.REPLACE_EXISTING)
 
+HtmlToPdfPrinter printer = new HtmlToPdfPrinter()
+String chromeBinaryPath = HtmlToPdfPrinter.getChromeBinaryPath()
+println "chromeBinaryPath: ${chromeBinaryPath}"
 Path pdf = html.getParent().resolve("output.pdf")
 printer.print(html, pdf)
 

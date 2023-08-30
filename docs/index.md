@@ -50,7 +50,7 @@ Am I going to extend the code further for Katalon users in general? --- No. I am
 
 They would obviously require Katalon Studio GUI to produce a PDF of better layout by just the same operation. The would not welcome any custom coding. --- I can not make it.
 
-Katalon Studio offers user only a limited chance to insert customized processing. This case, TestListener’s `@AfterTestSuite`-annotated method. When the method is invoked, there is no HTML file in the reportFolder. Katalon Studio generates the HTML after the `@AfterTestSuite`-annotated method has finished. So users has no chance to inject any processing for the HTML report.
+Katalon Studio offers user only a limited chance to insert customized processing. This case, TestListener’s `@AfterTestSuite`-annotated method. When the method is invoked, there is no HTML file in the reportFolder. Katalon Studio generates the HTML after the `@AfterTestSuite`-annotated method has finished. So users has no chance to inject any processing for the HTML report. I would need a new annotation `@AfterReportGeneration` to be supported. But it’s not likely.
 
 I would finish this project as it is now.
 
