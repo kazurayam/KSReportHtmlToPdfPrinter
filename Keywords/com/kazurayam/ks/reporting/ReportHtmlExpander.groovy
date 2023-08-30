@@ -6,10 +6,10 @@ import java.nio.file.Path
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 public class ReportHtmlExpander {
-	
+
 	public static EXPANDING_JS = "expandAllChildren('s1')"
-	
-	public Path expand(Path reportHtml, Path tempDir) {
+
+	public Path expand(Path reportHtml, Path tempDir = null) {
 		Objects.requireNonNull(reportHtml)
 		assert Files.exists(reportHtml)
 		if (tempDir != null) {
