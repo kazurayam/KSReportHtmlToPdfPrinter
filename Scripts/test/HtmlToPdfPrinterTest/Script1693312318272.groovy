@@ -17,7 +17,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 Path sourceReportsDir = projectDir.resolve("src/test/fixtures/Reports")
 Path targetReportsDir = projectDir.resolve("build/tmp/HtmlToPdfPrinterTest/Reports")
-WebUI.callTestCase(findTestCase("test/prepareWorkDir"), ["sourceReportsDir": sourceReportsDir, "targetReportsDir": targetReportsDir])
+WebUI.callTestCase(findTestCase("test/prepareTargetReportsDir"), ["sourceReportsDir": sourceReportsDir, "targetReportsDir": targetReportsDir])
 
 ReportsDirectoryScanner scanner = new ReportsDirectoryScanner()
 List<Path> reportFolders = scanner.scanReportsDirectory(targetReportsDir)

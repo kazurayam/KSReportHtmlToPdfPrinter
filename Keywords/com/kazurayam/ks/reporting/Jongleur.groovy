@@ -28,7 +28,7 @@ public class Jongleur {
 						Files.copy(expanded, html, StandardCopyOption.REPLACE_EXISTING)
 						// convert HTML to PDF
 						HtmlToPdfPrinter printer = new HtmlToPdfPrinter()
-						Path pdf = html.getParent().resolve("output.pdf")
+						Path pdf = html.getParent().resolve(html.getParent().getFileName().toString() + ".pdf")
 						printer.print(html, pdf)
 						numPass += 1
 					} else {

@@ -6,7 +6,7 @@ import org.apache.commons.io.FileUtils
 import com.kazurayam.ks.reporting.ReportsDirectoryScanner
 
 /**
- * test/prepareWorkDir
+ * test/prepareTargetReportsDir
  */
 assert sourceReportsDir != null
 assert targetReportsDir != null
