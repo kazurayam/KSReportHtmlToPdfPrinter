@@ -36,7 +36,14 @@
       <guid>092e1c8b-9398-44ff-b564-35669356d5a4</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/test/JongleurTest</testCaseId>
+      <testCaseId>Test Cases/test/JongleurTest1singular</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>9a851f2e-ccbd-4aaf-8cbc-d1574ab2cc72</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/test/JongleurTest2plural</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>

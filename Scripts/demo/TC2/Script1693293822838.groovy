@@ -10,7 +10,7 @@ TestObject makeTestObject(String id, String selector) {
 TestObject tObj = makeTestObject("lorum", "#ipsum")
 
 WebUI.openBrowser('')
-WebUI.setViewPortSize(800, 800)
+WebUI.setViewPortSize(720, 720)
 WebUI.navigateToUrl('https://duckduckgo.com/')
 WebUI.delay(3)
 WebUI.verifyElementPresent(tObj, 10)
